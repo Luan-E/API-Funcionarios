@@ -3,7 +3,8 @@ name: Pipeline CI
 on:
     push:
         branches:
-            -master
+            - master
+            - develop
 
 jobs:
     build:
@@ -17,4 +18,4 @@ jobs:
                 node-version: 24
             - run: npm install
             - run: npm test
-            - run: run build
+            - run: npm run build

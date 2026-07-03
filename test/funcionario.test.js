@@ -1,6 +1,6 @@
 const request = require('supertest')
 
-const app = require('../app')
+const app = require("../app")
 
 // Escrita de um teste
 describe('API de funcionários', () => {
@@ -12,9 +12,10 @@ describe('API de funcionários', () => {
             nome: "Cledisvaldo",
             cargo: "CEO"
         })
+
+        expect(resposta.statusCode).toBe(201)
+        expect(resposta.body.nome).toBe("Cledisvaldo")
+        expect(resposta.body.cargo).toBe("CEO")
     })
 
-    expect(resposta.statusCode.toBe(201))
-    expect(resposta.body.nome).toBe("Cledisvaldo")
-    expect(resposta.body.cargo).toBe("CEO")
 })

@@ -8,7 +8,7 @@ app.use(express.json())
 const funcionarios = []
 
 // Rota para cadastrar
-app.post('/funcionarios', (req,res) =>{
+app.post('/funcionarios', (req,res) => {
     const {nome, cargo} = req.body
 
     const funcionario = {
@@ -18,3 +18,10 @@ app.post('/funcionarios', (req,res) =>{
     funcionarios.push(funcionario)
     res.status(201).json(funcionario)
 })
+
+// Rota para mostrar os funcionários
+app.get('/funcionarios', (req,res) => {
+    res.status(200).json(funcionarios)
+})
+
+module.export = app

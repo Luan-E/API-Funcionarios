@@ -3,7 +3,8 @@ name: Pipeline CI
 on:
     push:
         branches:
-            -master
+            - master
+            - develop
 
 jobs:
     build:

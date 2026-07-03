@@ -24,4 +24,4 @@ app.get('/funcionarios', (req,res) => {
     res.status(200).json(funcionarios)
 })
 
-module.export = app
+module.exports = app

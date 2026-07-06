@@ -11,6 +11,20 @@ jobs:
 
         runs-on: ubuntu-latest
 
+        services:
+            mysql:
+                image: mysql:8
+                env:
+                    MYSQL_ROOT_PASSWORD: ${{secrets.DB_PASSWORD}}
+                    MYSQL_DATABASE: empresaTeste
+                ports:
+                    - 3306:3306
+                options: >-
+                    --health-cmd="mysqladmin ping"
+                    --health-interval=10s
+                    --health-timeout-5s
+                    --health-retries=5
+
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
@@ -19,3 +33,9 @@ jobs:
             - run: npm install
             - run: npm test
             - run: npm run build
+
+        env:
+            DB_HOST: 127.0.0.1
+            DB_USER: root
+            DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+            DB_NAME: empresaTeste

@@ -1,0 +1,13 @@
+const express = require("express")
+const routes = require("./routes/funcionarioRoutes")
+const sequelize = require("./config/database")
+
+const app = express()
+
+app.use(express.json())
+app.use(routes)
+
+// Sincroniza tabelas automaticamente
+sequelize.sync()
+
+module.exports = app
